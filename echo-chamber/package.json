@@ -1,0 +1,30 @@
+{
+  "name": "echo-chamber-sequences",
+  "version": "1.0.0",
+  "description": "A magical number sequence prediction puzzle that teaches pattern recognition and arithmetic progressions",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "web": "node web.js",
+    "advanced": "node advanced-web.js",
+    "advanced-test": "node advanced-test.js",
+    "test": "node test.js"
+  },
+  "keywords": [
+    "sequence",
+    "arithmetic-progression",
+    "pattern-recognition",
+    "educational",
+    "puzzle",
+    "magic",
+    "mathematics"
+  ],
+  "author": "GitHub Copilot Adventures",
+  "license": "MIT",
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Echo Chamber of Sequences - Web Interface</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1>🏛️ Echo Chamber of Sequences 🏛️</h1>
+                <p class="subtitle">A Magical Number Sequence Prediction Puzzle</p>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Navigation Tabs -->
+            <div class="tabs">
+                <button class="tab-button active" data-tab="predict">Predict</button>
+                <button class="tab-button" data-tab="demo">Demo</button>
+                <button class="tab-button" data-tab="memories">Memories</button>
+            </div>
+
+            <!-- Predict Tab -->
+            <div id="predict" class="tab-content active">
+                <div class="section">
+                    <h2>🔮 Predict the Next Number</h2>
+                    
+                    <div class="input-group">
+                        <label for="sequenceInput">Enter a sequence (comma-separated):</label>
+                        <input 
+                            type="text" 
+                            id="sequenceInput" 
+                            placeholder="e.g., 3, 6, 9, 12"
+                            class="input-field"
+                        >
+                        <small class="help-text">Enter numbers separated by commas</small>
+                    </div>
+
+                    <div class="button-group">
+                        <button id="predictBtn" class="btn btn-primary">Predict</button>
+                        <button id="echoBtn" class="btn btn-secondary">Echo & Store</button>
+                    </div>
+
+                    <!-- Result Display -->
+                    <div id="resultContainer" class="result-container hidden">
+                        <div id="resultContent" class="result-content"></div>
+                    </div>
+
+                    <!-- Error Display -->
+                    <div id="errorContainer" class="error-container hidden">
+                        <div id="errorContent" class="error-content"></div>
+                    </div>
+
+                    <!-- Info Box -->
+                    <div class="info-box">
+                        <h3>💡 About Arithmetic Progressions</h3>
+                        <p>An arithmetic progression is a sequence where the difference between consecutive numbers is constant.</p>
+                        <p><strong>Examples:</strong></p>
+                        <ul>
+                            <li>3, 6, 9, 12 → difference is 3 → next is 15</li>
+                            <li>2, 4, 6, 8 → difference is 2 → next is 10</li>
+                            <li>10, 5, 0, -5 → difference is -5 → next is -10</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Demo Tab -->
+            <div id="demo" class="tab-content">
+                <div class="section">
+                    <h2>🎭 Demo Mode</h2>
+                    <p>Click "Run Demo" to test the Chamber with 8 different sequences</p>
+                    
+                    <button id="runDemoBtn" class="btn btn-primary">Run Demo</button>
+
+                    <!-- Demo Results -->
+                    <div id="demoContainer" class="demo-container hidden">
+                        <div id="demoResults" class="demo-results"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Memories Tab -->
+            <div id="memories" class="tab-content">
+                <div class="section">
+                    <h2>💾 Chamber Memories</h2>
+                    <p>View all sequences the Chamber has processed (echoes)</p>
+                    
+                    <div class="button-group">
+                        <button id="loadMemoriesBtn" class="btn btn-primary">Load Memories</button>
+                        <button id="clearMemoriesBtn" class="btn btn-danger">Clear All</button>
+                    </div>
+
+                    <!-- Memories Display -->
+                    <div id="memoriesContainer" class="memories-container hidden">
+                        <div id="memoriesSummary" class="memories-summary"></div>
+                        <div id="memoriesList" class="memories-list"></div>
+                    </div>
+
+                    <!-- Empty State -->
+                    <div id="emptyMemories" class="empty-state">
+                        <p>✨ The Chamber is silent... no echoes yet.</p>
+                        <p>Go to the Predict tab and process some sequences!</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>🏛️ Echo Chamber of Sequences | <span id="version">v1.0.0</span></p>
+            <p>Powered by Node.js + Express</p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

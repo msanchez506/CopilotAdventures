@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🏛️ Echo Castle - Advanced Pattern Recognition</title>
+    <link rel="stylesheet" href="advanced-styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+</head>
+<body>
+    <div class="castle-background"></div>
+    
+    <!-- Header -->
+    <header class="castle-header">
+        <div class="header-content">
+            <h1>🏛️ Echo Castle</h1>
+            <p class="subtitle">Advanced Mathematical Pattern Recognition</p>
+            <div class="version">v2.0 - Multi-Pattern Edition</div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="castle-main">
+        <!-- Sidebar Navigation -->
+        <nav class="castle-nav">
+            <button class="nav-btn active" data-tab="predict">
+                <span class="icon">🔮</span>
+                <span>Predict</span>
+            </button>
+            <button class="nav-btn" data-tab="demo">
+                <span class="icon">🎯</span>
+                <span>Demo</span>
+            </button>
+            <button class="nav-btn" data-tab="patterns">
+                <span class="icon">📊</span>
+                <span>Patterns</span>
+            </button>
+            <button class="nav-btn" data-tab="history">
+                <span class="icon">📜</span>
+                <span>History</span>
+            </button>
+            <button class="nav-btn" data-tab="learn">
+                <span class="icon">🧠</span>
+                <span>Learn</span>
+            </button>
+        </nav>
+
+        <!-- Content Area -->
+        <section class="castle-content">
+            <!-- PREDICT TAB -->
+            <div class="tab-content active" data-tab-content="predict">
+                <div class="card castle-card">
+                    <h2>🔮 Sequence Predictor</h2>
+                    <p class="card-description">Enter a sequence and let the Echo Castle reveal the next number</p>
+
+                    <div class="input-section">
+                        <label for="sequence-input">Enter sequence (comma-separated):</label>
+                        <input 
+                            type="text" 
+                            id="sequence-input" 
+                            placeholder="e.g., 2, 4, 6, 8, 10"
+                            class="input-field"
+                        >
+                        <div class="input-help">Examples: 1,4,9,16,25 (squares) | 1,2,4,8,16 (powers) | 1,1,2,3,5,8 (fibonacci)</div>
+                    </div>
+
+                    <div class="button-group">
+                        <button id="predict-btn" class="btn btn-primary">
+                            🔮 Predict
+                        </button>
+                        <button id="echo-btn" class="btn btn-secondary">
+                            ✨ Echo & Store
+                        </button>
+                    </div>
+
+                    <!-- Results -->
+                    <div id="predict-result" class="result-container hidden">
+                        <div class="success-box">
+                            <h3>✨ The Chamber Reveals...</h3>
+                            <div class="result-grid">
+                                <div class="result-item">
+                                    <label>Next Number:</label>
+                                    <span id="next-number" class="result-value">-</span>
+                                </div>
+                                <div class="result-item">
+                                    <label>Pattern Type:</label>
+                                    <span id="pattern-type" class="pattern-badge">-</span>
+                                </div>
+                            </div>
+                            <div id="pattern-details" class="pattern-details"></div>
+                            <canvas id="prediction-chart" class="small-chart"></canvas>
+                        </div>
+                    </div>
+
+                    <div id="predict-error" class="error-box hidden">
+                        <h3>⚠️ The Chamber Cannot Echo...</h3>
+                        <p id="error-message">-</p>
+                        <p id="error-suggestion" class="suggestion">-</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DEMO TAB -->
+            <div class="tab-content" data-tab-content="demo">
+                <div class="card castle-card">
+                    <h2>🎯 Demo Sequences</h2>
+                    <p class="card-description">Try these pre-made sequences to see different pattern types</p>
+
+                    <div id="demo-grid" class="demo-grid"></div>
+                    
+                    <div id="demo-result" class="result-container hidden">
+                        <div class="success-box">
+                            <h3>✨ Demo Result</h3>
+                            <div id="demo-details"></div>
+                            <canvas id="demo-chart" class="medium-chart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PATTERNS TAB -->
+            <div class="tab-content" data-tab-content="patterns">
+                <div class="card castle-card">
+                    <h2>📊 Pattern Types</h2>
+                    <p class="card-description">Learn about the different mathematical patterns the Echo Castle recognizes</p>
+
+                    <div id="patterns-container" class="patterns-grid"></div>
+                </div>
+            </div>
+
+            <!-- HISTORY TAB -->
+            <div class="tab-content" data-tab-content="history">
+                <div class="card castle-card">
+                    <h2>📜 Prediction History</h2>
+                    <p class="card-description">Review all sequences you've analyzed</p>
+
+                    <div class="button-group">
+                        <button id="load-memories-btn" class="btn btn-primary">
+                            📂 Load Memories
+                        </button>
+                        <button id="clear-memories-btn" class="btn btn-danger">
+                            🔥 Clear All
+                        </button>
+                    </div>
+
+                    <div id="memories-stats" class="stats-box hidden">
+                        <h3>📈 Statistics</h3>
+                        <div id="stats-content"></div>
+                    </div>
+
+                    <div id="memories-list" class="memories-list hidden">
+                        <h3>Stored Sequences</h3>
+                        <div id="memories-content"></div>
+                    </div>
+
+                    <div id="history-empty" class="empty-state">
+                        <p>📭 No memories stored yet</p>
+                        <p class="empty-help">Use the Predict tab and click "Echo & Store" to save sequences</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- LEARN TAB -->
+            <div class="tab-content" data-tab-content="learn">
+                <div class="card castle-card">
+                    <h2>🧠 Learning Guide</h2>
+                    <p class="card-description">Master the mathematical patterns recognized by Echo Castle</p>
+
+                    <div class="learn-section">
+                        <h3>Understanding Sequences</h3>
+                        <p>A sequence is an ordered list of numbers that follow a mathematical pattern. Echo Castle analyzes sequences and detects the underlying pattern to predict the next number.</p>
+
+                        <h4>Key Concepts</h4>
+                        <ul class="concept-list">
+                            <li><strong>Arithmetic Progression:</strong> Add/subtract the same value each time</li>
+                            <li><strong>Geometric Progression:</strong> Multiply/divide by the same value each time</li>
+                            <li><strong>Polynomial Sequences:</strong> Follow a polynomial formula (quadratic, cubic, etc.)</li>
+                            <li><strong>Fibonacci-like:</strong> Each term is the sum of the previous two</li>
+                        </ul>
+
+                        <h4>How to Find Patterns</h4>
+                        <ol class="step-list">
+                            <li>Calculate the differences between consecutive terms</li>
+                            <li>If differences are constant → Arithmetic progression</li>
+                            <li>If ratios are constant → Geometric progression</li>
+                            <li>If second differences are constant → Quadratic sequence</li>
+                            <li>If each term = sum of previous two → Fibonacci-like</li>
+                        </ol>
+
+                        <h4>Examples</h4>
+                        <div class="example-box">
+                            <p><strong>Arithmetic:</strong> 2, 4, 6, 8, 10 → next is 12</p>
+                            <p class="example-explain">Common difference: 2</p>
+                        </div>
+                        <div class="example-box">
+                            <p><strong>Geometric:</strong> 2, 6, 18, 54 → next is 162</p>
+                            <p class="example-explain">Common ratio: 3</p>
+                        </div>
+                        <div class="example-box">
+                            <p><strong>Quadratic:</strong> 1, 4, 9, 16, 25 → next is 36</p>
+                            <p class="example-explain">Pattern: n² (perfect squares)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="castle-footer">
+        <p>🏛️ Echo Castle v2.0 | Advanced Pattern Recognition Engine</p>
+        <p class="footer-credit">Built with Node.js, Express, and Chart.js</p>
+    </footer>
+
+    <!-- Loading Indicator -->
+    <div id="loading" class="loading hidden">
+        <div class="spinner"></div>
+        <p>Consulting the Echo Castle...</p>
+    </div>
+
+    <script src="advanced-app.js"></script>
+</body>
+</html>
